@@ -30,7 +30,9 @@ const configs = addBaseConfig({
   },
   plugins: [
     new DefinePlugin({
+      // SOCKET_HOST: JSON.stringify(`10.0.0.223:${socketConfig.PORT}`)
       SOCKET_HOST: JSON.stringify(`localhost:${socketConfig.PORT}`)
+
     }),
     new HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
@@ -40,6 +42,8 @@ const configs = addBaseConfig({
     })
   ],
   devServer: {
+    // host:"10.0.0.223",
+    // host:"0.0.0.0",
     compress: true,
     port: 9000,
     watchOptions: {

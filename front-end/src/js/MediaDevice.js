@@ -10,12 +10,12 @@ class MediaDevice extends Emitter {
    */
   start() {
     const constraints = {
-      // video: {
-      //   facingMode: 'user',
-        // height: { min: 360, ideal: 720, max: 1080 }
+      video: {
+        facingMode: 'user',
+        height: { min: 360, ideal: 720, max: 1080 }
         // height: { min: 240, ideal: 720, max: 1080 }
-      // },
-      video: true,
+      },
+      // video: true,
       audio: true
     };
 
@@ -25,7 +25,7 @@ class MediaDevice extends Emitter {
         this.stream = stream;
         this.emit('stream', stream);
       })
-      // .catch(err => console.log(err));
+      .catch(err => console.log(err));
 
     return this;
   }

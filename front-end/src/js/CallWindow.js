@@ -40,7 +40,6 @@ class CallWindow extends Component {
   }
 
   setMediaStream() {
-    console.log(this.props)
     const { peerSrc, localSrc } = this.props;
     if (this.peerVideo && peerSrc) this.peerVideo.srcObject = peerSrc;
     if (this.localVideo && localSrc) this.localVideo.srcObject = localSrc;
@@ -58,7 +57,7 @@ class CallWindow extends Component {
   }
 
   renderControlButtons() {
-    const getClass = (icon, type) => classnames(`btn btn-primary btn-sm fa ${icon}`, {
+    const getClass = (icon, type) => classnames(`  btn btn-primary btn-sm ${type.toLowerCase()}-btn fa ${icon}`, {
       disable: !this.state[type]
     });
 
@@ -76,18 +75,18 @@ class CallWindow extends Component {
 
     <div className="col-6">
         <h4>Video Chat</h4>
-        <div className="jumbotron">
+        <div className="{test}">
 
 
-          <div className={status}>
+          <div className={classnames("video-chat-box",status)}>
           <video className="peer-video" id="peerVideo" ref={el => this.peerVideo = el} autoPlay></video>
 
           <video className="user-video" id="localVideo" ref={el => this.localVideo = el} autoPlay muted ></video>
 
           <br/>
-          <div className="text-center">
+          <div className="text-center chat-ctrl-btn-group">
           {this.renderControlButtons()}
-            <button type="button" className="btn btn-sm  btn-danger" onClick={() => this.props.endCall(true)} ><i className="fa fa-times"></i></button>
+            <button type="button" className="btn btn-sm  btn-danger fa fa-times" onClick={() => this.props.endCall(true)} ></button>
           </div>
         </div>  
           </div>
